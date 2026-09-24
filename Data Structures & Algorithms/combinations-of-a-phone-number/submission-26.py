@@ -1,0 +1,24 @@
+class Solution:
+    def letterCombinations(self, digits: str) -> List[str]:
+        res = []
+        digitToChar = {
+            "2": "abc",
+            "3": "def",
+            "4": "ghi",
+            "5": "jkl",
+            "6": "mno",
+            "7": "qprs",
+            "8": "tuv",
+            "9": "wxyz",
+        }
+        def d(c,i):
+            if len(digits)==0:
+                return 
+            if i>=len(digits):
+                res.append(c)
+                return
+            for j in digitToChar[digits[i]]:
+                d(c+j,i+1)
+        
+        d("",0)
+        return res
